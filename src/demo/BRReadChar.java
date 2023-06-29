@@ -1,4 +1,4 @@
-package com.example.io.demo;
+package demo;
 
 import java.io.BufferedReader; // 读取单个字符用
 import java.io.InputStreamReader;

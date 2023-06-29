@@ -1,4 +1,4 @@
-package com.example.io.demo;
+package demo;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;

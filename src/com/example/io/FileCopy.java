@@ -3,8 +3,9 @@ package com.example.io;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
-// import java.io.FileWriter;
-// import java.io.BufferedWriter;
+
+import java.io.FileWriter;     // 节点流，可用于处理流传入对象
+import java.io.BufferedWriter; // 处理流
 
 /*
  * FileCopy
@@ -54,7 +55,7 @@ public class FileCopy {
         //  void java.io.FileOutputStream.write(byte[] b, int off, int len) throws IOException
         // 将指定字节数组从 b 的 off 位置开始的 len 字节的内容写入输出流
         fileOutputStream.write(by, 0, len);
-        fileOutputStream.flush(); //?why need?
+        fileOutputStream.flush(); // 强制输出缓冲区剩余的数据
       }
       // 已读写完成数据
       System.out.println("file copied.");
@@ -63,6 +64,23 @@ public class FileCopy {
     } catch (Exception e) {
       e.printStackTrace();
     }
-    
+
+
+    // 增加数据追加功能
+    // 因为测试文件是.txt文件所以这里使用字符流进行追加
+    // 思路：传入文件对象创建流，流写入，流刷新（强制写入），流关闭
+    // 思考：如何在文件的指定位置写入？
+    String addString = "this is a copy files.";
+    char[] c = addString.toCharArray();
+    try {
+      BufferedWriter bWriter = new BufferedWriter(new FileWriter(copyFilePath,true)); // 注意FileWriter构造时输入了追加参数ture
+      // append if true, then bytes will be written to the end of the file rather than the beginning
+      bWriter.write(c, 0, c.length);
+      bWriter.flush();
+      bWriter.close();
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
+
   }
 }
