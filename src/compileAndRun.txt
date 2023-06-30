@@ -1,0 +1,15 @@
+javac -d ..\classes .\com\example\io\*.java
+java -classpath ..\classes com.example.io.*
+
+在/src
+javac -d ..\classes .\com\example\io\FilesCopy.java .\com\example\io\ExtFilter.java
+
+然后到/classed
+写一个文件manifest.txt，里面写：
+Main-Class: com.example.io.FilesCopy
+Class-Path:
+然后：
+jar cvfm FilesCopy.jar .\manifest.txt .\com\example\io\FilesCopy.class .\com\example\io\ExtFilter.class
+最后执行：
+java -jar .\FilesCopy.jar D:\MySapce\javaio\filesTest D:\MySapce\javaio\filesTest\moreCopy .txt 
+
