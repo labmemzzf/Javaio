@@ -50,7 +50,7 @@ public class ExtFilesRecCopy {
     // }
 
     
-    File[] childDirs = dir.listFiles(new DirFilter());
+    File[] childDirs = dir.listFiles(new DirFilter());  //此处可优化，可以创建一个全局的过滤器，不用每次都创建
     for (File childDir : childDirs) {
       copy(childDir, new File(targeDir, childDir.getName())); // 递归调用
     }
